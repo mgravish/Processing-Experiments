@@ -13,9 +13,9 @@ function draw() {
     
     if(i.length>0) {
         for(var j=0; j<i.length; j++) {
+            i[j].step();
             i[j].move();
-            i[j].advance();
-            if(!i[j].checkEdge(j)){
+            if(!i[j].kill(j)){
                 i[j].render();
             }
         }
@@ -43,24 +43,26 @@ function Particle(x,y) {
     this.fill.b = b;
     
     this.move = function() {
-        this.pos.y += this.speed;
+       // this.pos.y += this.speed;
     }
     
-    this.advance = function() {
+    this.step = function() {
         this.age += 1;
-        this.speed += .1;
+        //this.speed += .1;
     }
     
-    this.checkEdge = function(index){
-        if (this.pos.y>windowHeight+rad) {
+    this.kill = function(index){
+        
+        if (this.age>30) {
             i.splice(index,1);
             console.log("killed");
             return true;
         }
+        
     }
     
     this.render = function(r) {
-        fill(this.fill.r+2*this.age, this.fill.g+2*this.age, this.fill.b+2*this.age);
+        fill(this.fill.r+5*this.age, this.fill.g+5*this.age, this.fill.b+5*this.age);
         ellipse(this.pos.x, this.pos.y, rad, rad);
     }
 }
