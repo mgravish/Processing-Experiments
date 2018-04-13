@@ -3,14 +3,15 @@ var r, g, b, rad, i, displayText, speed, empty, palette;
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(255, 255, 255);
-    speed = 1;
+    speed = 2;
     i = [];
     var limegreen = '#14ffc8';
     var darkpurple = '#5d3b66';
     var mustard = '#ffcc21';
     palette = [limegreen, darkpurple, mustard];
     empty=false;
-    mousePressed();
+    //mousePressed();
+    i[i.length] = new Particle(windowWidth/2,windowHeight-200,i.length,-90);
 }
 
 function draw() {
@@ -40,18 +41,17 @@ function draw() {
 
 function mousePressed() {
     console.log(i.length);
-    for (var j=0;j<25;j++) {
-        i[j] = new Particle(random(200,windowWidth-200),random(200,windowHeight-200),i.length);
-    }
+    var ran = random(i);
+    i[i.length] = new Particle(ran.pos.x, ran.pos.y, i.length, degrees(ran.angle)+leftOrRight());
 }
 
-function Particle(x,y,index) {
+function Particle(x, y, index, angle) {
     this.rad = 7;
     this.pos = createVector(x, y);
     this.dir = createVector(0, 0);
     this.vel = createVector(0, 0);
     this.col = random(palette);
-    this.angle = radians(Math.round((Math.random()*7))*45);
+    this.angle = radians(angle);
     this.speed = speed;
     this.age = 1;
     
@@ -67,9 +67,10 @@ function Particle(x,y,index) {
     }
     
     this.move = function() {
+        /*
         if (random(0,1000)<5) {
             this.angle += leftOrRight();
-        }
+        }*/
        
 		this.dir.x = cos(this.angle);
 		this.dir.y = sin(this.angle);
@@ -98,8 +99,8 @@ function leftOrRight() {
     var val = Math.round(random(0,1));
     
     if (val>0) {
-        return radians(45);
+        return -135;
     } else {
-        return radians(-45);
+        return -45;
     }
 }
