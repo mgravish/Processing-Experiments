@@ -3,14 +3,13 @@ var r, g, b, rad, i, displayText, speed, empty, palette;
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(255, 255, 255);
-    speed = 2;
+    speed = 1;
     i = [];
     var limegreen = '#14ffc8';
     var darkpurple = '#5d3b66';
     var mustard = '#ffcc21';
     palette = [limegreen, darkpurple, mustard];
     empty=false;
-    //mousePressed();
     i[i.length] = new Particle(windowWidth/2,windowHeight-200,i.length,-90);
 }
 
@@ -40,13 +39,16 @@ function draw() {
 }
 
 function mousePressed() {
-    console.log(i.length);
-    var ran = random(i);
-    i[i.length] = new Particle(ran.pos.x, ran.pos.y, i.length, degrees(ran.angle)+leftOrRight());
+    var num = i.length;
+    for(var k=0; k<num;k++) {
+        i[i.length] = new Particle(i[k].pos.x, i[k].pos.y, i.length, aimUp(degrees(i[k].angle)));
+        fill(random(palette));
+        ellipse(i[k].pos.x, i[k].pos.y, 10, 10);
+    }
 }
 
 function Particle(x, y, index, angle) {
-    this.rad = 7;
+    this.rad = 3;
     this.pos = createVector(x, y);
     this.dir = createVector(0, 0);
     this.vel = createVector(0, 0);
@@ -67,12 +69,7 @@ function Particle(x, y, index, angle) {
     }
     
     this.move = function() {
-        /*
-        if (random(0,1000)<5) {
-            this.angle += leftOrRight();
-        }*/
-       
-		this.dir.x = cos(this.angle);
+        this.dir.x = cos(this.angle);
 		this.dir.y = sin(this.angle);
 		this.vel = this.dir.copy();
 		this.vel.mult(this.speed);
@@ -94,13 +91,26 @@ function Particle(x, y, index, angle) {
     }
 }
 
-function leftOrRight() {
+function aimUp(o) {
     
-    var val = Math.round(random(0,1));
+    var val = Math.floor(random(0,2));
+    console.log("o = "+o);
     
-    if (val>0) {
-        return -135;
-    } else {
-        return -45;
+    console.log("val = "+val);
+    
+    if (o==-90) {
+        switch(val) {
+            case 0:
+                console.log("Returning -135");
+                return -135;
+            case 1:
+                console.log("Returning -45");
+                return -45;
+        }
     }
+    else {
+        return -90;
+    }
+    
+    
 }
