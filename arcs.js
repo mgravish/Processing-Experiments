@@ -1,68 +1,84 @@
-var r, g, b, rad, i, displayText, speed, palette, limegreen, darkpurple, mustard;
+var palette, limegreen, darkpurple, mustard, position, rad, b, e, curX, curY, cont, eitherOr;
+var i = new Array();
+eitherOr = [-1, 1];
 
-limegreen = '#14ffc8';
-darkpurple = '#5d3b66';
-mustard = '#ffcc21';
-palette = [limegreen, darkpurple, mustard];
+limegreen = '#14ffc8'; darkpurple = '#5d3b66'; mustard = '#ffcc21';
+
+palette = [
+    limegreen,
+    darkpurple,
+    mustard];
+
+rad = 10;
+b = 0;
+
 
 function setup() {
+    pixelDensity(2.0);
+    smooth();
     createCanvas(windowWidth, windowHeight);
     background(255, 255, 255);
-    i = new Curve(500,500,50,50,0, PI, OPEN);
+    cont = true;
+    mousePressed();
 }
 
 function draw() {
-    strokeWeight(0);
-    i.render();
+    background(255, 255, 255);
+    for(var j = 0; j < i.length; j++){
+        i[j].step();
+        i[j].render();
+    }
+    console.log("drawing");
 }
 
 function mousePressed() {
-    var j = new Curve(i.pos.x+i.w,500,50,50,0,PI,OPEN);
+    cont=true;
+    i=new Array();
+    i[i.length] = new Curve(0, 0, rad, rad, b, PI, OPEN);
+    while(cont){
+        curX = i[i.length-1].pos.x+75;
+        curY = i[i.length-1].pos.y;
+
+        if(curX > windowWidth) {
+            curX = 0;
+            curY += 75;
+        }
+        
+        if(curY > windowHeight){
+            cont=false;
+            console.log("noLoop()");
+        }
+        
+        if(i.length%2===0) {
+            b=0;
+            e=PI;
+        }
+        
+        else {
+            b=PI;
+            e=TWO_PI;
+        }
+        
+        i.push(new Curve(curX, curY, rad, rad, b, e, OPEN));
+    }
 }
 
 function Curve(x,y,w,h,start,stop,mode) {
     this.rad = 10;
+    this.angle = 0;
+    this.mult = random(eitherOr);
     this.pos = createVector(x, y);
-    this.dir = createVector(0, 0);
-    this.vel = createVector(0, 0);
-    this.angle = radians(-90);
-    this.col = random(palette); 
-    this.speed = speed;
-    this.age = 1;
-    this.w=w;
+    this.col = random(palette);
     
-    var wMax, wMin, hMax, hMin;
-    wMax = windowWidth;
-    wMin = -this.rad;
-    hMax = windowHeight;
-    hMin = -this.rad;
-    /*
-    this.step = function() {
-        this.age += 1;
+    this.step = function(){
+        this.angle += .05*this.mult;
     }
     
-    this.move = function() {
-		this.dir.x = cos(this.angle);
-		this.dir.y = sin(this.angle);
-		this.vel = this.dir.copy();
-		this.vel.mult(this.speed);
-		this.pos.add(this.vel);
-        this.pos.add(2*sin(this.age/30),0);
-    }
-        
-    this.offscreen = function() {
-        if ( this.pos.y > hMax || this.pos.y < hMin || this.pos.x > wMax || this.pos.x < wMin ) {
-            console.log("OFF");
-            return true;
-        } 
-        else {
-            return false;
-        }
-    }
-    */
     this.render = function(j) {
         stroke(this.col);
-        strokeWeight(5);
-        arc(x,y,w,h,start,stop,mode);
+        strokeWeight(((mouseX+100)/(windowWidth*2))*10);
+        noFill();
+        arc(x,y,w,h,start+this.angle,stop+this.angle,mode);
     }
 }
+
