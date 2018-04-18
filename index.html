@@ -4,27 +4,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
     <script src="arcs.js"></script>
     <style>
-        body{
-            width:100xw;
+        body {
+            width:100vw;
             height:100vh;
+            margin: 0px;
+            padding: 0px;
         }
-        .centered-title {
+        .centered-parent {
+            position: fixed;
+            top:0px;
+            left:0px;
+            margin:0px;
+            padding:0px;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+        p {
             font-family: 'Work Sans';
             font-size: 60px;
             text-align: center;
-            padding-top: 25px;
-            position:fixed;
+            padding: 50px;
             background-color: white;
-            width:420px;
-            height:100px;
-            margin-left:-210px;
-            margin-top:-40px;
-            top:50%;
-            left:50%;
-        }  
+            margin:0px;
+            padding:50px;
+        }
     </style>
   </head>
   <body>
-      <div class="centered-title">MGRAVISH</div>
+      <div class="centered-parent">
+        <p>ARCS</p>
+      </div>
   </body>
 </html>

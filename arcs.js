@@ -34,13 +34,14 @@ function draw() {
 function mousePressed() {
     cont=true;
     i=new Array();
-    i[i.length] = new Curve(0, 0, rad, rad, b, PI, OPEN);
+    resizeCanvas(windowWidth, windowHeight);
+    i[i.length] = new Curve(25, 25, rad, rad, b, PI, OPEN);
     while(cont){
         curX = i[i.length-1].pos.x+75;
         curY = i[i.length-1].pos.y;
 
         if(curX > windowWidth) {
-            curX = 0;
+            curX = 25;
             curY += 75;
         }
         
@@ -61,6 +62,10 @@ function mousePressed() {
         
         i.push(new Curve(curX, curY, rad, rad, b, e, OPEN));
     }
+}
+
+function windowResized() {
+  mousePressed();
 }
 
 function Curve(x,y,w,h,start,stop,mode) {
