@@ -17,7 +17,7 @@ function setup() {
     pixelDensity(2.0);
     smooth();
     createCanvas(windowWidth, windowHeight);
-    background(255, 255, 255);
+    background(200, 255, 255);
     cont = true;
     mousePressed();
 }
@@ -28,7 +28,7 @@ function draw() {
         i[j].step();
         i[j].render();
     }
-    console.log("drawing");
+    //console.log("drawing");
 }
 
 function mousePressed() {
@@ -86,4 +86,3 @@ function Curve(x,y,w,h,start,stop,mode) {
         arc(x,y,w,h,start+this.angle,stop+this.angle,mode);
     }
 }
-

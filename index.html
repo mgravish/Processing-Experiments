@@ -1,40 +1,19 @@
 <html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:800" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
-    <script src="arcs.js"></script>
-    <style>
-        body {
-            width:100vw;
-            height:100vh;
-            margin: 0px;
-            padding: 0px;
-        }
-        .centered-parent {
-            position: fixed;
-            top:0px;
-            left:0px;
-            margin:0px;
-            padding:0px;
-            top: 50%;
-            left: 50%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%);
-        }
-        p {
-            font-family: 'Work Sans';
-            font-size: 60px;
-            text-align: center;
-            padding: 50px;
-            background-color: white;
-            margin:0px;
-            padding:50px;
-        }
-    </style>
-  </head>
-  <body>
-      <div class="centered-parent">
-        <p>ARCS</p>
-      </div>
-  </body>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,800" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src='p5.min.js'></script>
+        <script src='p5.dom.min.js'></script>
+        <script src="arcs.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <a>Arcs</a>
+            <a>Subway</a>
+            <a>Leaf</a>
+        </div>
+        <div class="centered-parent"></div>
+    </body>
+    <script src="main.js"></script>
 </html>
