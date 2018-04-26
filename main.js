@@ -24,7 +24,7 @@ $('.header i').on('click', function() {
     else {
         noLoop();
         $('#play').css('color','black');
-        $('#pause').css('color', pickRandom(palette));
+        $('#pause').css('color', pickRandom(headerPalette));
         paused = true;
     }
 });

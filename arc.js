@@ -83,8 +83,19 @@ function Curve(x,y,w,h,start,stop,mode) {
     
     this.render = function(j) {
         stroke(this.col);
-        strokeWeight(((mouseX+200)/(windowWidth*2))*20);
+        w = maxVal(((mouseX+200)/(windowWidth*2)), ((mouseY+200)/(windowHeight*2)))
+        strokeWeight(20*w);
+        h = 50*w;
         noFill();
-        arc(x,y,w,h,start+this.angle,stop+this.angle,mode);
+        arc(x,y,h,h,start+this.angle,stop+this.angle,mode);
+    }
+}
+
+function maxVal(a,b) {
+    if(a>b) {
+        return a;
+    }
+    else {
+        return b;
     }
 }
