@@ -2,6 +2,10 @@ var r, g, b, rad, i, displayText, speed, empty, palette, cnv;
 
 function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
+    cnv.style('display', 'block');
+    cnv.style('position','absolute');
+    cnv.style('top','0');
+    cnv.style('z-index','1');
     background(255, 255, 255);
     speed = 1;
     i = [];

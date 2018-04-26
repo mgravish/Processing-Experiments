@@ -1,17 +1,25 @@
-var r, g, b, rad, i, displayText, speed, noiseScale;
+var r, g, b, rad, i, displayText, speed, noiseScale, cnv, palette;
 
 noiseScale = 10;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    cnv = createCanvas(windowWidth, windowHeight);
+    cnv.mousePressed(click);
+    
+    var limegreen = '#14ffc8';
+    var darkpurple = '#5d3b66';
+    var mustard = '#ffcc21';
+    palette = [limegreen, darkpurple, mustard];
+    
     speed = 2;
-    i = [];
+    i = new Array();
+    click();
 }
 
 function draw() {
     background(255, 255, 255);
     strokeWeight(0);
-    if(i.length>0) {
+    if(i.length !== 0) {
         if(i.length==25){i[i.length] = new Particle(random(200,windowWidth-200),random(200,windowHeight-200),i.length);}
         for(var j=0; j<i.length; j++) {
             if(i[j].onscreen(j)) {
@@ -32,19 +40,25 @@ function draw() {
     }
 }
 
-function mouseDragged() {
-    console.log(i.length);
+function click() {
+    //console.log(i.length);
     loop();
-    console.log("loop()");
-    i[i.length] = new Particle(mouseX,mouseY,i.length);
+    console.log("loop() here");
+    if(i.length<200){
+        for (var k = 0; k < 50; k++){
+            i.push(new Particle(random(300, cnv.width-300),random(300, cnv.height-300),k));
+        }
+        console.log(i.length);
+    }
+    
 }
 
 function Particle(x,y,index) {
     this.rad = 0;
     this.pos = createVector(x, y);
-    this.dir = createVector(0, 0);
+    this.dir = createVector(0,0);
     this.vel = createVector(0, 0);
-    this.angle = radians(90);
+    this.angle = radians(random([-180,-90,90,0]));
     this.speed = speed;
     this.age = 1;
     
@@ -55,14 +69,7 @@ function Particle(x,y,index) {
     hMax = windowHeight;
     hMin = -this.rad;
     
-    r = random(255);
-    g = random(255);
-    b = random(255);
-    
-    this.fill = createVector(r, g, b);
-    this.fill.r = r;
-    this.fill.g = g;
-    this.fill.b = b;
+    this.fill = random(palette);
     
     this.step = function() {
         this.age += 1;
@@ -71,7 +78,7 @@ function Particle(x,y,index) {
     }
     
     this.move = function() {
-        if(this.age%100==0){
+        if(this.age%random([25,50,75,100])==0){
             this.angle += leftOrRight();
             this.speed += .1;
         }
@@ -93,7 +100,7 @@ function Particle(x,y,index) {
     }
     
     this.render = function(j) {
-        fill(this.fill.r, this.fill.g, this.fill.b);
+        fill(this.fill);
         ellipse(this.pos.x, this.pos.y, this.rad, this.rad);
     }
 }

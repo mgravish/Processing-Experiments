@@ -9,13 +9,17 @@ palette = [
     darkpurple,
     mustard];
 
-rad = 10;
+rad = 15;
 b = 0;
 
 function setup() {
     pixelDensity(2.0);
     smooth();
     cnv = createCanvas(windowWidth, windowHeight);
+    cnv.style('display', 'block');
+    cnv.style('position','absolute');
+    cnv.style('top','0');
+    cnv.style('z-index','1');
     background(200, 255, 255);
     cont = true;
     cnv.mousePressed(click);
@@ -81,7 +85,7 @@ function Curve(x,y,w,h,start,stop,mode) {
     
     this.render = function(j) {
         stroke(this.col);
-        strokeWeight(((mouseX+100)/(windowWidth*2))*10);
+        strokeWeight(((mouseX+200)/(windowWidth*2))*20);
         noFill();
         arc(x,y,w,h,start+this.angle,stop+this.angle,mode);
     }

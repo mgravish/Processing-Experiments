@@ -2,6 +2,10 @@ var r, g, b, rad, i, displayText, speed, empty, palette, cnv;
 
 function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
+    cnv.style('display', 'block');
+    cnv.style('position','absolute');
+    cnv.style('top','0');
+    cnv.style('z-index','1');
     cnv.mousePressed(click);
     background(255, 255, 255);
     speed = 1;
@@ -43,13 +47,14 @@ function click() {
     var num = i.length;
     for(var k=0; k<num;k++) {
         i[i.length] = new Particle(i[k].pos.x, i[k].pos.y, i.length, aimUp(degrees(i[k].angle)));
+        strokeWeight(0);
         fill(random(palette));
-        ellipse(i[k].pos.x, i[k].pos.y, 10, 10);
+        ellipse(i[k].pos.x, i[k].pos.y, 20, 20);
     }
 }
 
 function Particle(x, y, index, angle) {
-    this.rad = 3;
+    this.rad = 7;
     this.pos = createVector(x, y);
     this.dir = createVector(0, 0);
     this.vel = createVector(0, 0);

@@ -27,6 +27,8 @@ p {
     padding: 8px;
     padding-top: 12px;
     background-color: white;
+    position:fixed;
+    z-index: 2;
     box-shadow: rgb(230, 230, 230) 0px 1px 7px 0px;
     margin-bottom: 10px;
     border-bottom: 1px solid rgb(225, 225, 225);
@@ -45,6 +47,30 @@ p {
     cursor: pointer;
     -webkit-transition: color .1s; /* Safari */
     transition: color .1s;
+}
+
+#arc {
+    color: #ffcc21;
+}
+
+#arc::after {
+    content: 'arc';
+}
+
+#subway::after {
+    content: 'subway';
+}
+
+#leaf::after {
+    content: 'leaf';
+}
+
+#crowd::after {
+    content: 'crowd';   
+}
+
+#walk::after {
+    content: 'walk';   
 }
 
 .centered-parent {
