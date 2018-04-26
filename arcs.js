@@ -1,4 +1,4 @@
-var palette, limegreen, darkpurple, mustard, position, rad, b, e, curX, curY, cont, eitherOr;
+var palette, limegreen, darkpurple, mustard, position, rad, b, e, curX, curY, cont, eitherOr, cnv;
 var i = new Array();
 eitherOr = [-1, 1];
 
@@ -12,14 +12,14 @@ palette = [
 rad = 10;
 b = 0;
 
-
 function setup() {
     pixelDensity(2.0);
     smooth();
-    createCanvas(windowWidth, windowHeight);
-    background(255, 255, 255);
+    cnv = createCanvas(windowWidth, windowHeight);
+    background(200, 255, 255);
     cont = true;
-    mousePressed();
+    cnv.mousePressed(click);
+    click();
 }
 
 function draw() {
@@ -28,10 +28,10 @@ function draw() {
         i[j].step();
         i[j].render();
     }
-    console.log("drawing");
+    //console.log("drawing");
 }
 
-function mousePressed() {
+function click() {
     cont=true;
     i=new Array();
     resizeCanvas(windowWidth, windowHeight);
@@ -86,4 +86,3 @@ function Curve(x,y,w,h,start,stop,mode) {
         arc(x,y,w,h,start+this.angle,stop+this.angle,mode);
     }
 }
-
