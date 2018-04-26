@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 var r, g, b, rad, i, displayText, speed, empty, palette, cnv;
 
 function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
+=======
+var r, g, b, rad, i, displayText, speed, empty, palette, sketch;
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+>>>>>>> df3335125405f820dbc2c86542875a8bc3453612
     background(255, 255, 255);
     speed = 1;
     i = [];
@@ -10,8 +17,12 @@ function setup() {
     var mustard = '#ffcc21';
     palette = [limegreen, darkpurple, mustard];
     empty=false;
+<<<<<<< HEAD
     cnv.mousePressed(click);
     click();
+=======
+    mousePressed();
+>>>>>>> df3335125405f820dbc2c86542875a8bc3453612
 }
 
 function draw() {
@@ -39,7 +50,11 @@ function draw() {
     }
 }
 
+<<<<<<< HEAD
 function click() {
+=======
+function mousePressed() {
+>>>>>>> df3335125405f820dbc2c86542875a8bc3453612
     console.log(i.length);
     for (var j=0;j<25;j++) {
         i[j] = new Particle(random(200,windowWidth-200),random(200,windowHeight-200),i.length);

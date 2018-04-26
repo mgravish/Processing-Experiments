@@ -1,8 +1,7 @@
-var r, g, b, rad, i, displayText, speed, empty, palette, cnv;
+var r, g, b, rad, i, displayText, speed, empty, palette;
 
 function setup() {
-    cnv = createCanvas(windowWidth, windowHeight);
-    cnv.mousePressed(click);
+    createCanvas(windowWidth, windowHeight);
     background(255, 255, 255);
     speed = 1;
     i = [];
@@ -39,7 +38,7 @@ function draw() {
     }
 }
 
-function click() {
+function mousePressed() {
     var num = i.length;
     for(var k=0; k<num;k++) {
         i[i.length] = new Particle(i[k].pos.x, i[k].pos.y, i.length, aimUp(degrees(i[k].angle)));

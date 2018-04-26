@@ -19,7 +19,11 @@ p {
 .header {
     font-family: 'Work Sans';
     font-weight: 600;
+<<<<<<< HEAD
     font-size: 15px;
+=======
+    font-size: 14px;
+>>>>>>> df3335125405f820dbc2c86542875a8bc3453612
     letter-spacing: 1px;
     text-transform: uppercase;
     width: 100vw;
@@ -33,6 +37,7 @@ p {
 }
 
 .header a {
+<<<<<<< HEAD
     position:relative;
     top: -6px;
     margin-left:24px;
@@ -45,6 +50,10 @@ p {
     cursor: pointer;
     -webkit-transition: color .1s; /* Safari */
     transition: color .1s;
+=======
+    margin-left:24px;
+    cursor: pointer;
+>>>>>>> df3335125405f820dbc2c86542875a8bc3453612
 }
 
 .centered-parent {
@@ -57,6 +66,7 @@ p {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+<<<<<<< HEAD
 }
 
 .material-icons {
@@ -91,4 +101,6 @@ p {
 
 #pause {
     color: black;
+=======
+>>>>>>> df3335125405f820dbc2c86542875a8bc3453612
 }

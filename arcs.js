@@ -15,7 +15,11 @@ b = 0;
 function setup() {
     pixelDensity(2.0);
     smooth();
+<<<<<<< HEAD
     cnv = createCanvas(windowWidth, windowHeight);
+=======
+    createCanvas(windowWidth, windowHeight);
+>>>>>>> df3335125405f820dbc2c86542875a8bc3453612
     background(200, 255, 255);
     cont = true;
     cnv.mousePressed(click);
