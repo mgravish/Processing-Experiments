@@ -1,5 +1,4 @@
 var cnv, img, glitch, glitchArray;
-
 var limegreen = '#14ffc8';
 var darkpurple = '#5d3b66';
 var mustard = '#ffcc21';
@@ -14,7 +13,7 @@ function setup() {
     cnv.style('position','absolute');
     cnv.style('top','0');
     cnv.style('z-index','1');
-    glitchArray= new Group();
+    glitchArray = new Group();
     cnv.mousePressed(click);
     click();
 }

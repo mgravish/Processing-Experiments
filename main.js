@@ -29,6 +29,10 @@ $('.header i').on('click', function() {
     }
 });
 
+$('.footer').on('click', function() {
+   $(this).fadeOut( "slow", function() {}); 
+});
+
 function pickRandom (myArray) {
     return myArray[Math.floor(Math.random() * myArray.length)];
 }

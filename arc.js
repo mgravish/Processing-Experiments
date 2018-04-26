@@ -1,14 +1,11 @@
-var palette, limegreen, darkpurple, mustard, position, rad, b, e, curX, curY, cont, eitherOr, cnv;
+var position, rad, b, e, curX, curY, cont, eitherOr, cnv;
+var limegreen = '#14ffc8';
+var darkpurple = '#5d3b66';
+var mustard = '#ffcc21';
+var palette = [limegreen, darkpurple, mustard];
+
 var i = new Array();
 eitherOr = [-1, 1];
-
-limegreen = '#14ffc8'; darkpurple = '#5d3b66'; mustard = '#ffcc21';
-
-palette = [
-    limegreen,
-    darkpurple,
-    mustard];
-
 rad = 15;
 b = 0;
 
@@ -19,6 +16,7 @@ function setup() {
     cnv.style('display', 'block');
     cnv.style('position','absolute');
     cnv.style('top','0');
+    cnv.style('height','100vh');
     cnv.style('z-index','1');
     background(200, 255, 255);
     cont = true;

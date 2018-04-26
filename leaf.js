@@ -1,19 +1,20 @@
-var r, g, b, rad, i, displayText, speed, empty, palette, cnv;
+var r, g, b, rad, i, displayText, speed, empty, cnv;
+var limegreen = '#14ffc8';
+var darkpurple = '#5d3b66';
+var mustard = '#ffcc21';
+var palette = [limegreen, darkpurple, mustard];
 
 function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
     cnv.style('display', 'block');
     cnv.style('position','absolute');
     cnv.style('top','0');
+    cnv.style('height','100vh');
     cnv.style('z-index','1');
     cnv.mousePressed(click);
     background(255, 255, 255);
     speed = 1;
     i = [];
-    var limegreen = '#14ffc8';
-    var darkpurple = '#5d3b66';
-    var mustard = '#ffcc21';
-    palette = [limegreen, darkpurple, mustard];
     empty=false;
     i[i.length] = new Particle(windowWidth/2,windowHeight-200,i.length,-90);
 }
