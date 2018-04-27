@@ -1,22 +1,29 @@
 console.log('Loaded lottie-animations.js');
 
-var animationData = 'lottie/button--disabled.json';
+var anim1 = 'lottie/button--disabled.json';
 
 var params = {
-        container: document.getElementById('centered'),
         renderer: 'svg',
         loop: false,
         autoplay: false,
-        path: animationData,
+        path: null,
 };
 
 var anim;
-var element;
+var animArray = new Array();
+var element = '<div id="anim1"></div>';
+var elem;
 
-anim = lottie.loadAnimation(params);
-anim.addEventListener('DOMLoaded',startAnimation);
+for(var i = 0; i < 1; i++) {
+    //elem = $('#centered')append(element);
+    params.path = anim1;
+    params.name = 'mybutton';
+    //params.container: elem;
+    params.container.on('click', clicked);
+    anim = lottie.loadAnimation(params);
+    animArray.push(anim);
+}
 
-console.log( $('g').length );
 
 
 function startAnimation(){
@@ -25,6 +32,7 @@ function startAnimation(){
     container.onclick = clicked;
 }
 
-function clicked(){
-    anim.goToAndPlay(0);
+function clicked(e){
+    console.log(this);
+    mybutton.goToAndPlay(0);
 }
