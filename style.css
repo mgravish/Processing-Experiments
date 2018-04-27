@@ -71,30 +71,6 @@ p {
     transition: color .1s;
 }
 
-#walk {
-    color: #ffcc21;
-}
-
-#arc::after {
-    content: 'arc';
-}
-
-#subway::after {
-    content: 'subway';
-}
-
-#leaf::after {
-    content: 'leaf';
-}
-
-#crowd::after {
-    content: 'crowd';   
-}
-
-#walk::after {
-    content: 'walk';   
-}
-
 .centered-parent {
     position: fixed;
     top:0px;
@@ -133,10 +109,39 @@ p {
   font-feature-settings: 'liga';
 }
 
+/* Nav Styles */
 #play {
     color: #ffcc21;
 }
 
 #pause {
     color: black;
+}
+
+#walk {
+    color: #ffcc21;
+}
+
+#arc::after {
+    content: 'arc';
+}
+
+#subway::after {
+    content: 'subway';
+}
+
+#leaf::after {
+    content: 'leaf';
+}
+
+#crowd::after {
+    content: 'crowd';   
+}
+
+#walk::after {
+    content: 'walk';   
+}
+
+#lottie::after {
+    content: 'lottie';   
 }
