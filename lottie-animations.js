@@ -1,4 +1,4 @@
-console.log('lottie-animations.js');
+console.log('Loaded lottie-animations.js');
 
 var animationData = 'lottie/button--disabled.json';
 
