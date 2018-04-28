@@ -1,6 +1,6 @@
 body {
     width:100vw;
-    height:100vh;
+    /*height:100vh;*/
     margin: 0px;
     padding: 0px;
 }
@@ -75,12 +75,12 @@ p {
     position: fixed;
     top:0px;
     left:0px;
-    margin:0px;
-    padding:0px;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+    padding:20px;
+    top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
 }
 
 .material-icons {
@@ -108,6 +108,75 @@ p {
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+.lottie-container {
+    flex-grow:1;
+    max-width:500px;
+    height:500px;
+    background-color: rgb(255,255,255);
+    margin: 0px;
+    border: 1px solid rgba(240,240,240,1);
+}
+
+.reload::after { 
+    content:'replay';
+    font-family: 'Material Icons';
+    color: rgba(180,180,180,1);
+    font-size: 20px;
+    float: right;
+    right: 6px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    position:relative;
+    z-index: 0;
+    transition: color .25s;
+    cursor: pointer;
+}
+
+.reload:hover::after {
+    color: #14ffc8;
+}
+
+.toggle::after { 
+    content:'swap_horiz';
+    font-family: 'Material Icons';
+    font-size: 24px;
+    color: rgba(180,180,180,1);
+    float: left;
+    left: 12px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    position:relative;
+    z-index: 0;
+    transition: color .25s;
+    cursor: pointer;
+}
+
+.toggle:hover::after {
+    color: #ffcc21;
+}
+
+.toggle-enabled::after {
+    color: #ffcc21;
+    content:'swap_horiz';
+    font-family: 'Material Icons';
+    float: left;
+    left: 12px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    position:relative;
+    z-index: 0;
+    transition: color .25s;
+    cursor: pointer;
+}
+
+.lottie-container:hover {
+  border: 1px solid rgba(230,230,230,1);
+}
+
 
 /* Nav Styles */
 #play {
