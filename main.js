@@ -40,6 +40,8 @@ $('.footer').on('click', function() {
    $(this).fadeOut( "slow", function() {}); 
 });
 
+$('.footer').delay(5000).fadeOut(400);
+
 function handleLottie() {
     if ( lottieActive ) { removeLottie(); }  
     else { addLottie(); }
