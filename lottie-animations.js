@@ -1,7 +1,6 @@
 var files = [ 
     'lottie/pill-button.json',
     'lottie/radio-button.json',
-    'lottie/car-loop.json'
 ];
 
 var animArray = new Array();
