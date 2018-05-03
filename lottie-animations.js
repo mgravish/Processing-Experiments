@@ -11,8 +11,9 @@ for (var i=0; i<files.length; i++) {
     
     var div =`
     <div class="lottie-container" id="lottie-anim-`+i+`">
+        <div class="loop"></div>
         <div class="reload"></div>
-        <div class="toggle"></div>
+        <div class="scrub"></div>
     </div>`;
     container.append(div);
     var elem = $('.lottie-container')[i];
@@ -44,15 +45,18 @@ function prepAnimElement(e, anim) {
 
 function addListeners (e, anim) {
     var fn = anim.fileName;
-    anim.toggled = false;
+    anim.scrubbed = false;
+    anim.looped = false;
     anim.segs = [0,30];
     var animId = anim.wrapper.id;
     var container = $('#'+animId)[0];
-    var svgParent = $(container).children()[2];
+    var svgParent = $(container).children()[3];
     var svgItem = $(svgParent).children()[0];
     var rl = '#'+e;
     var rlbtn = $(rl + ' .reload')[0];
-    var togglebtn = $(rl + ' .toggle')[0];
+    var scrubBtn = $(rl + ' .scrub')[0];
+    var loopBtn = $(rl + ' .loop')[0];
+    $(svgItem).css('cursor','pointer');
     
     // Click Behavior
     svgItem.addEventListener('click', function() { 
@@ -62,41 +66,33 @@ function addListeners (e, anim) {
     // Reload Button
     rlbtn.addEventListener('click', function() { anim.goToAndStop(0, true); }, false);
     
-    // Toggle Button 
-    togglebtn.addEventListener('click', function() {
-        if( !anim.toggled ) { 
-            $(togglebtn).addClass('toggle-enabled');
+    // Scrub Button 
+    scrubBtn.addEventListener('click', function() {
+        if( !anim.scrubbed ) { 
+            $(scrubBtn).addClass('scrub-enabled');
             $(container).mousemove(function() {
                 var scrub = (event.pageX - $(container).offset().left)/$(container).width();
                 var map = scrub*(anim.segs[1]-anim.segs[0]-1)+scrub;
                 anim.goToAndStop(map,true);
             });
-            //anim.segs = [35,60];
-            //anim.goToAndStop(anim.segs[0], true);
         }
         else { 
-            $(togglebtn).removeClass('toggle-enabled');
+            $(scrubBtn).removeClass('scrub-enabled');
             $(container).off('mousemove');
-            //anim.segs = [0,30];
-            //anim.goToAndStop(anim.segs[0], true);
         }
-        anim.toggled = !anim.toggled;
-        console.log('Toggling status: '+anim.toggled);
+        anim.scrubbed = !anim.scrubbed;
     }, false);
     
-    // Scrub Behavior
-    /*
-    $(container).mousemove(function() {
-        var scrub = (event.pageX - $(container).offset().left)/$(container).width();
-        var map = scrub*(anim.segs[1]-anim.segs[0]-1)+scrub;
-        anim.goToAndStop(map,true);
-    });
-    */
-    
-    $(parent).css('cursor','pointer');
-    console.log(container);
-}
-
-function reload() {
-    console.log ('reload');
+    // Loop Button 
+    loopBtn.addEventListener('click', function() {
+        if( !anim.looped ) { 
+            $(loopBtn).addClass('loop-enabled');
+            anim.loop = true;
+        }
+        else { 
+            $(loopBtn).removeClass('loop-enabled');
+            anim.loop = false;
+        }
+        anim.looped = !anim.looped;
+    }, false);
 }
